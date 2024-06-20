@@ -14,3 +14,13 @@ This repository contains all the react projects
             -> Making Layout for router and using Outlet form react router dom to render different children components
             -> useParams Hook
             -> How to make api requests before loading component using loader
+
+
+
+=> Theme Switcher
+
+    => Contents :
+
+
+            -> Understanding Context Api (other way around)
+            -> Configuring tailwind css to use class dark: bg-dark-600 based on class "dark" present in html tag and not on device settings 
