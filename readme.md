@@ -24,3 +24,13 @@ This repository contains all the react projects
 
             -> Understanding Context Api (other way around)
             -> Configuring tailwind css to use class dark: bg-dark-600 based on class "dark" present in html tag and not on device settings 
+
+
+
+
+=> BLOGSHARE
+
+    => Contents:
+
+            ->Using Appwrite For Backend
+            ->Setting up redux/toolkit
