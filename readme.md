@@ -34,3 +34,5 @@ This repository contains all the react projects
 
             ->Using Appwrite For Backend
             ->Setting up redux/toolkit
+            ->Please read difference bw ref and forwardref, aslo how to achieve the functionality of forwardref using ref
+            ->Leran react hook form
