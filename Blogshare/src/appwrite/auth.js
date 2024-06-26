@@ -26,9 +26,10 @@ export class AuthService{
         try {
             // const response = await account.create(ID.unique(), email, password,name);
             const response = await this.account.create(ID.unique(), email, password,name);
+            console.log(response)
             if(response){
                 // either make request on login endpoint or return response as created user
-                return response
+                return await this.userLogin({email,password})
             }else{
                 return response
             }
@@ -40,25 +41,28 @@ export class AuthService{
     async userLogin({email,password}){
         try{
             // const response = await account.createEmailPasswordSession(email,password)
+            console.log(email,password)
+            console.log(this.account)
             const response = await this.account.createEmailPasswordSession(email,password)
-        }catch(error){
+            return response
 
+
+        }catch(error){
+            console.log("error logging in ", error)
         }
     }
 
     async getCurrentUser(){
         try{
-            await this.account.get()
-        }catch(error){
-            console.log(error)
-        }
-
+           return await this.account.get()
+        }catch (error) {
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         return null
-    }
+    }}
 
     async logout(){
         try {
-            await this.account.deleteSessions();
+            return await  this.account.deleteSessions();
         } catch (error) {
             console.log("Appwrite Error : Logout Error",error)
             

@@ -29,13 +29,13 @@ class Service {
         }
     }
 
-    async updatePost({title,slug,content,featuredImage,status,userId}){
+    async updatePost(documentId,{title,slug,content,featuredImage,status,userId}){
 
         try {
             return this.databases.updateDocument(
                 appwriteDatabaseId,
                 appwriteCollectionId,
-                slug,
+                documentId,
                 {
                     title,content,featuredImage,status,userId
                 }
@@ -62,8 +62,13 @@ class Service {
         }
     }
 
-    async getPosts(){
+    async getPosts(userId){
         try {
+            if(userId){
+                return this.databases.listDocuments(
+                    appwriteDatabaseId,appwriteCollectionId,[Query.equal("status",`${userId}`)])
+            }
+            // const queries = [Query.equal("status","active")]
             return this.databases.listDocuments(
                 appwriteDatabaseId,appwriteCollectionId,[Query.equal("status","active")]
             )
@@ -94,9 +99,16 @@ class Service {
 
     }
 
-    async getFilePreview(fileId){
+    // at first i made the below function as async, thats why it wasnt returning the href i believe it was sending a promise
+    // in that case i would need to send request in useEffect to fetch the file preview, and then set the link returned from this function in the image src
+    // simpler way is just use simple function as it doesnt need time to fetch the image info, so no need to use await
+
+     getFilePreview(fileId){
         try {
-            return this.bucket.getFilePreview(appwriteBucketId,fileId)
+            // console.log(fileId)
+            const image =  this.bucket.getFilePreview(appwriteBucketId,fileId)
+            // console.log(image.href)
+            return image.href
         } catch (error) {
             console.log("Error fetching file preview")
         }

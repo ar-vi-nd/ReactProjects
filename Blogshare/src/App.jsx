@@ -46,11 +46,11 @@ useEffect(()=>{
 
 
 return !loading?(<div className='min-h-screen text-center flex-wrap bg-gray-500'> 
-{/* <Header></Header> */}
-Todo <main>
+<Header></Header>
+ <main>
   <Outlet/>
 </main>
-{/* <Footer></Footer> */}
+<Footer></Footer>
 </div>): null
 }
 

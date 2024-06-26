@@ -5,6 +5,8 @@ import React, { forwardRef, useId } from 'react'
 
 const Input = forwardRef(({label,type="text",className = "",...props},ref) => {
 
+  // console.log(props)
+
     const id = useId()
   return (
     <div className='w-full'>
