@@ -64,9 +64,10 @@ class Service {
 
     async getPosts(userId){
         try {
+            console.log(userId)
             if(userId){
                 return this.databases.listDocuments(
-                    appwriteDatabaseId,appwriteCollectionId,[Query.equal("status",`${userId}`)])
+                    appwriteDatabaseId,appwriteCollectionId,[Query.equal("userId",`${userId}`)])
             }
             // const queries = [Query.equal("status","active")]
             return this.databases.listDocuments(

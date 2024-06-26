@@ -33,7 +33,9 @@ const Login = () => {
             const session = await authService.userLogin(body)
             if(session){
                 const userData = await authService.getCurrentUser()
+                // console.log(userData)
                 if(userData){
+                    console.log("here")
                     dispatch(login(userData))
                     navigate('/')
                 }
